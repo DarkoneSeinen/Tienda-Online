@@ -1,3 +1,3 @@
-import { Product } from '../../../generated/prisma/index';
+import { Product } from '@prisma/client'
 
-export type CreateProductDto = Omit<Product, 'id' | 'createdAt' | 'updatedAt'>;
+export type CreateProductDto = Omit<Product, 'id' | 'createdAt' | 'updatedAt'>
