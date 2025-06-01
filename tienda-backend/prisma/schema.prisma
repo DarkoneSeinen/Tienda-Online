@@ -3,10 +3,22 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Product {
+  id          Int      @id @default(autoincrement()) // id es un entero, es la clave primaria y se autoincrementa
+  name        String   @unique
+  description String? // description es una cadena de texto opcional
+  price       Float
+  image       String?
+  createdAt   DateTime @default(now()) // createdAt es una fecha y hora, se establece por defecto a la fecha y hora actual
+  updatedAt   DateTime @updatedAt
+}
+
+// el comando para pasarlo a la base de datos es:
+// npx prisma migrate dev --name init (init es el primer nombre cambiar despues)
