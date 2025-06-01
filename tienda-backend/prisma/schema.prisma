@@ -12,7 +12,7 @@ datasource db {
 
 model Product {
   id          Int      @id @default(autoincrement()) // id es un entero, es la clave primaria y se autoincrementa
-  name        String
+  name        String   @unique
   description String? // description es una cadena de texto opcional
   price       Float
   image       String?
@@ -21,4 +21,4 @@ model Product {
 }
 
 // el comando para pasarlo a la base de datos es:
-// npx prisma migrate dev --name init
+// npx prisma migrate dev --name init (init es el primer nombre cambiar despues)
