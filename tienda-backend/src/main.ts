@@ -6,6 +6,13 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
 
+  // Configurar CORS
+  app.enableCors({
+    origin: 'https://ominous-succotash-pjr6v6w6q99vhrvwj-3000.app.github.dev', //aqui se debe poner la url del frontend (next)
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    credentials: true,
+  });
+
   const config = new DocumentBuilder() // coumentacion de swagger
     .setTitle('Cats example')
     .setDescription('The cats API description')
@@ -16,7 +23,5 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, documentFactory);
 
   await app.listen(process.env.PORT ?? 4000);
-
-  app.enableCors(); // Habilitar CORS para permitir solicitudes desde otros dominios
 }
 bootstrap();
