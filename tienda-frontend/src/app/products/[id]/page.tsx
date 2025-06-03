@@ -5,13 +5,14 @@ import Link from "next/link";
 
 
 interface Props {
-    params: {
+    params: Promise<{
         id: string
-    }
+    }>
 }
 
 async function ProductDetailPage({params}: Props) {
-    const product = await getProduct(params.id);
+    const resolvedParams = await params;
+    const product = await getProduct(resolvedParams.id);
     console.log(product);
 
     return <div>
