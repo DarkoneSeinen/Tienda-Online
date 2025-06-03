@@ -21,6 +21,7 @@ export function ProductFrom() {
             price: parseFloat(data.price)
         });
         router.push('/'); // redirige al usuario a la pagina principal despues de crear el producto
+        router.refresh(); // refresca la pagina para mostrar el nuevo producto
     })
 
     return (
