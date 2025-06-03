@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { createProduct } from "../products.api";
+import { useRouter } from "next/navigation";
 
 // se uso el hook useForm de react-hook-form para manejar el formulario de manera sencilla
 
@@ -11,6 +12,7 @@ import { createProduct } from "../products.api";
 export function ProductFrom() {
 
     const { register, handleSubmit } = useForm();
+    const router =  useRouter();
 
     const onSubmit = handleSubmit(async data =>{
         console.log(data)
@@ -18,6 +20,7 @@ export function ProductFrom() {
             ...data,
             price: parseFloat(data.price)
         });
+        router.push('/'); // redirige al usuario a la pagina principal despues de crear el producto
     })
 
     return (
