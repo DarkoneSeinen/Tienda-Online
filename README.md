@@ -75,19 +75,41 @@ Una aplicación web moderna de comercio electrónico construida con Next.js y Ne
 
 \`\`\`
 tienda-online/
-├── tienda-frontend/           # Aplicación Next.js
-│   ├── src/
-│   │   ├── app/              # App Router y páginas
-│   │   ├── components/       # Componentes reutilizables
-│   │   └── lib/             # Utilidades y configuraciones
-│   └── public/              # Archivos estáticos
+├── LICENSE                   # Licencia MIT
+├── README.md                # Documentación principal
 │
-└── tienda-backend/           # API NestJS
+├── tienda-frontend/         # Aplicación Next.js
+│   ├── src/
+│   │   ├── app/            # App Router y páginas
+│   │   │   ├── products/   # Funcionalidad de productos
+│   │   │   │   ├── [id]/  # Detalles y edición
+│   │   │   │   └── new/   # Crear producto
+│   │   │   ├── globals.css
+│   │   │   └── page.tsx   # Página principal
+│   │   ├── components/     # Componentes reutilizables
+│   │   │   ├── ui/        # Componentes base
+│   │   │   │   ├── button.tsx
+│   │   │   │   ├── card.tsx
+│   │   │   │   ├── input.tsx
+│   │   │   │   └── label.tsx
+│   │   │   └── product-card.tsx
+│   │   └── lib/           # Utilidades
+│   │       └── utils.ts
+│   └── public/            # Archivos estáticos
+│
+└── tienda-backend/         # API NestJS
     ├── src/
-    │   ├── products/        # Módulo de productos
-    │   └── prisma/          # Servicio de Prisma
+    │   ├── products/      # Módulo de productos
+    │   │   ├── dto/      # Data Transfer Objects
+    │   │   ├── entities/ # Entidades
+    │   │   ├── products.controller.ts
+    │   │   └── products.service.ts
+    │   ├── prisma/       # Configuración Prisma
+    │   │   └── prisma.service.ts
+    │   └── main.ts       # Punto de entrada
     └── prisma/
-        └── schema.prisma    # Schema de la base de datos
+        ├── migrations/   # Historial de migraciones
+        └── schema.prisma # Schema de la base de datos
 \`\`\`
 
 ## 🚀 Comenzando
