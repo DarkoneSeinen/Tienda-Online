@@ -1,11 +1,23 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 
 export default function OrderSuccessPage() {
   const router = useRouter();
+
+  useEffect(() => {
+    // Add a small delay before enabling the buttons to prevent accidental clicks
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const [loading, setLoading] = useState(true);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
@@ -21,6 +33,7 @@ export default function OrderSuccessPage() {
           <Button
             onClick={() => router.push('/')}
             className="w-full"
+            disabled={loading}
           >
             Continue Shopping
           </Button>
@@ -29,6 +42,7 @@ export default function OrderSuccessPage() {
             variant="outline"
             onClick={() => router.push('/orders')}
             className="w-full"
+            disabled={loading}
           >
             View Orders
           </Button>
