@@ -15,10 +15,28 @@ export function Navbar() {
   const router = useRouter();
 
   useEffect(() => {
-    const userStr = localStorage.getItem('user');
-    if (userStr) {
-      setUser(JSON.parse(userStr));
-    }
+    const checkUser = () => {
+      const userStr = localStorage.getItem('user');
+      if (userStr) {
+        setUser(JSON.parse(userStr));
+      } else {
+        setUser(null);
+      }
+    };
+
+    // Check initial state
+    checkUser();
+
+    // Listen for storage changes
+    window.addEventListener('storage', checkUser);
+    
+    // Custom event for login/logout
+    window.addEventListener('authStateChange', checkUser);
+
+    return () => {
+      window.removeEventListener('storage', checkUser);
+      window.removeEventListener('authStateChange', checkUser);
+    };
   }, []);
 
   const handleLogout = () => {

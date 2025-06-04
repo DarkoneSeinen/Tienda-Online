@@ -26,9 +26,18 @@ export const useRequireAuth = () => {
   return token;
 };
 
+export const setAuth = (token: string, user: any) => {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    window.dispatchEvent(new Event('authStateChange'));
+  }
+};
+
 export const clearAuth = () => {
   if (typeof window !== 'undefined') {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    window.dispatchEvent(new Event('authStateChange'));
   }
 };

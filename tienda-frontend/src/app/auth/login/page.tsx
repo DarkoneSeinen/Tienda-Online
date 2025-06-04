@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { login } from '../auth.api';
 import { useRouter } from 'next/navigation';
+import { setAuth } from '../auth.utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -21,8 +22,7 @@ export default function LoginPage() {
 
     try {
       const response = await login(email, password);
-      localStorage.setItem('token', response.access_token);
-      localStorage.setItem('user', JSON.stringify(response.user));
+      setAuth(response.access_token, response.user);
       router.push('/');
     } catch (err) {
       setError('Invalid credentials');
