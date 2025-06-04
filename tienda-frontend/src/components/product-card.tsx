@@ -34,8 +34,13 @@ export function ProductCard({product}:any){
             </CardContent>
 
             <CardFooter className="flex justify-between">
-              <Button>
-                Buy Now
+              <Button className="mt-5"
+              onClick={(e) =>{
+                e.stopPropagation();
+                router.push(`/products/${product.id}/edit`);
+              }}
+              >
+                Edit
               </Button>
 
               <Button className="mt-5" variant="destructive"

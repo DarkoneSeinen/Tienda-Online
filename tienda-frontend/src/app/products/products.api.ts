@@ -22,6 +22,17 @@ export async function createProduct(productData: any){
     console.log(data)
 }
 
+export async function updateProduct(id: string, productData: any) {
+    const res = await fetch(`https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api/products/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(productData),
+    });
+    return await res.json();
+}
+
 export async function deleteProduct(id: string) {
     const res = await fetch(`https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api/products/${id}`, {
         method: "DELETE",
