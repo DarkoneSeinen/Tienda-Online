@@ -7,6 +7,8 @@ export class CartService {
   constructor(private prisma: PrismaService) {}
 
   async addToCart(userId: number, dto: AddToCartDto) {
+    console.log('Adding to cart:', { userId, dto });
+    
     // Verificar si el producto existe y tiene stock suficiente
     const product = await this.prisma.product.findUnique({
       where: { id: dto.productId },
@@ -20,27 +22,40 @@ export class CartService {
       throw new BadRequestException('Not enough stock');
     }
 
-    // Intentar actualizar item existente o crear uno nuevo
-    const cartItem = await this.prisma.cartItem.upsert({
+    // Buscar si ya existe un item en el carrito
+    const existingItem = await this.prisma.cartItem.findUnique({
       where: {
         userId_productId: {
           userId,
           productId: dto.productId,
-        },
+        }
       },
-      update: {
-        quantity: {
-          increment: dto.quantity,
+    });
+
+    if (existingItem) {
+      // Actualizar cantidad si ya existe
+      return this.prisma.cartItem.update({
+        where: { id: existingItem.id },
+        data: {
+          quantity: existingItem.quantity + dto.quantity,
         },
-      },
-      create: {
+        include: {
+          product: true,
+        },
+      });
+    }
+
+    // Crear nuevo item si no existe
+    return this.prisma.cartItem.create({
+      data: {
         userId,
         productId: dto.productId,
         quantity: dto.quantity,
       },
+      include: {
+        product: true,
+      },
     });
-
-    return cartItem;
   }
 
   async getCart(userId: number) {

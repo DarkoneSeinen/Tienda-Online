@@ -10,18 +10,18 @@ export class CartController {
   constructor(private readonly cartService: CartService) {}
 
   @Post('add')
-  addToCart(@User('id') userId: number, @Body() dto: AddToCartDto) {
+  addToCart(@User('userId') userId: number, @Body() dto: AddToCartDto) {
     return this.cartService.addToCart(userId, dto);
   }
 
   @Get()
-  getCart(@User('id') userId: number) {
+  getCart(@User('userId') userId: number) {
     return this.cartService.getCart(userId);
   }
 
   @Put(':itemId')
   updateCartItem(
-    @User('id') userId: number,
+    @User('userId') userId: number,
     @Param('itemId') itemId: number,
     @Body() dto: UpdateCartItemDto,
   ) {
@@ -29,12 +29,12 @@ export class CartController {
   }
 
   @Delete(':itemId')
-  removeFromCart(@User('id') userId: number, @Param('itemId') itemId: number) {
+  removeFromCart(@User('userId') userId: number, @Param('itemId') itemId: number) {
     return this.cartService.removeFromCart(userId, +itemId);
   }
 
   @Post('checkout')
-  checkout(@User('id') userId: number) {
+  checkout(@User('userId') userId: number) {
     return this.cartService.checkout(userId);
   }
 }
