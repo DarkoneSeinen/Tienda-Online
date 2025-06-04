@@ -73,7 +73,7 @@ Una aplicación web moderna de comercio electrónico construida con Next.js y Ne
 
 ## 📁 Estructura del Proyecto
 
-
+```
 tienda-online/
 ├── LICENSE                   # Licencia MIT
 ├── README.md                # Documentación principal
@@ -110,7 +110,7 @@ tienda-online/
     └── prisma/
         ├── migrations/   # Historial de migraciones
         └── schema.prisma # Schema de la base de datos
-
+```
 
 ## 🚀 Comenzando
 
@@ -122,10 +122,10 @@ tienda-online/
 ### Instalación
 
 1. Clona el repositorio:
-\`\`\`bash
+```bash
 git clone https://github.com/DarkoneSeinen/tienda-online.git
 cd tienda-online
-\`\`\`
+```
 
 2. Instala las dependencias del frontend:
 \`\`\`bash
