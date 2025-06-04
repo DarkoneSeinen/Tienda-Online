@@ -11,13 +11,22 @@ datasource db {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement()) // id es un entero, es la clave primaria y se autoincrementa
+  id          Int      @id @default(autoincrement())
   name        String   @unique
-  description String? // description es una cadena de texto opcional
+  description String?
   price       Float
   image       String?
-  createdAt   DateTime @default(now()) // createdAt es una fecha y hora, se establece por defecto a la fecha y hora actual
+  createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 // el comando para pasarlo a la base de datos es:

@@ -6,9 +6,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
 
-  // Configurar CORS
+  // Configure CORS
   app.enableCors({
-    origin: 'https://ominous-succotash-pjr6v6w6q99vhrvwj-3000.app.github.dev', //aqui se debe poner la url del frontend (next)
+    origin: 'https://ominous-succotash-pjr6v6w6q99vhrvwj-3000.app.github.dev',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: true,
   });
