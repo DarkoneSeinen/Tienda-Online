@@ -73,7 +73,7 @@ Una aplicación web moderna de comercio electrónico construida con Next.js y Ne
 
 ## 📁 Estructura del Proyecto
 
-\`\`\`
+
 tienda-online/
 ├── LICENSE                   # Licencia MIT
 ├── README.md                # Documentación principal
@@ -110,7 +110,7 @@ tienda-online/
     └── prisma/
         ├── migrations/   # Historial de migraciones
         └── schema.prisma # Schema de la base de datos
-\`\`\`
+
 
 ## 🚀 Comenzando
 
