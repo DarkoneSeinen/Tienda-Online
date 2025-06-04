@@ -128,24 +128,24 @@ cd tienda-online
 ```
 
 2. Instala las dependencias del frontend:
-\`\`\`bash
+```bash
 cd tienda-frontend
 npm install
-\`\`\`
+```
 
 3. Instala las dependencias del backend:
-\`\`\`bash
+```bash
 cd ../tienda-backend
 npm install
-\`\`\`
+```
 
 4. Configura la base de datos:
-\`\`\`bash
+```bash
 npx prisma migrate dev
-\`\`\`
+```
 
 5. Inicia el desarrollo:
-\`\`\`bash
+```bash
 # Terminal 1: Backend
 cd tienda-backend
 npm run start:dev
@@ -153,11 +153,7 @@ npm run start:dev
 # Terminal 2: Frontend
 cd tienda-frontend
 npm run dev
-\`\`\`
-
-## 🤝 Contribuir
-
-Las contribuciones son bienvenidas. Por favor, lee el archivo CONTRIBUTING.md para detalles sobre nuestro código de conducta y el proceso para enviarnos pull requests.
+```
 
 ## 📝 Estado del Proyecto
 
