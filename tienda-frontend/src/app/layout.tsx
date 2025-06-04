@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Toaster } from 'sonner';
 import "./globals.css";
 
 const fontSans = FontSans({ //añade la fuente Inter
@@ -41,6 +42,7 @@ export default function RootLayout({
       >
         <Navbar />
         <main className="container mx-auto pt-5">{children}</main>
+        <Toaster position="top-right" />
       </body>
     </html>
   );
