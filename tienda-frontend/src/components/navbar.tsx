@@ -46,6 +46,10 @@ export function Navbar() {
     router.push('/auth/login');
   };
 
+  if (!user) {
+    return null;
+  }
+
   return (
     <nav className="bg-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4">
@@ -55,25 +59,11 @@ export function Navbar() {
               <span className="text-xl font-bold">Tienda Online</span>
             </Link>
           </div>
-
-          <div className="flex items-center">
-            {user ? (
-              <div className="flex items-center space-x-4">
-                <span className="text-gray-700">Welcome, {user.name}</span>
-                <Button variant="outline" onClick={handleLogout}>
-                  Logout
-                </Button>
-              </div>
-            ) : (
-              <div className="space-x-4">
-                <Link href="/auth/login">
-                  <Button variant="outline">Login</Button>
-                </Link>
-                <Link href="/auth/register">
-                  <Button>Register</Button>
-                </Link>
-              </div>
-            )}
+          <div className="flex items-center space-x-4">
+            <span className="text-gray-700">Welcome, {user.name}</span>
+            <Button variant="outline" onClick={handleLogout}>
+              Logout
+            </Button>
           </div>
         </div>
       </div>
