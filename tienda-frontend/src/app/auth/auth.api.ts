@@ -1,3 +1,5 @@
+const API_URL = 'https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api';
+
 interface LoginResponse {
   access_token: string;
   user: {
@@ -8,7 +10,7 @@ interface LoginResponse {
 }
 
 export const login = async (email: string, password: string): Promise<LoginResponse> => {
-  const response = await fetch('https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api/auth/login', {
+  const response = await fetch(`${API_URL}/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -24,7 +26,7 @@ export const login = async (email: string, password: string): Promise<LoginRespo
 };
 
 export const register = async (email: string, password: string, name: string) => {
-  const response = await fetch('https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api/auth/register', {
+  const response = await fetch(`${API_URL}/auth/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -2,7 +2,7 @@
 
 Una aplicación web moderna de comercio electrónico construida con Next.js y NestJS, utilizando Prisma como ORM.
 
-## 🚀 Características Actuales
+## 🚀 Características Principales
 
 - **Gestión de Productos**
   - ✅ Listado de productos con interfaz moderna y responsiva
@@ -10,20 +10,37 @@ Una aplicación web moderna de comercio electrónico construida con Next.js y Ne
   - ✅ Edición de productos existentes
   - ✅ Eliminación de productos
   - ✅ Vista detallada de productos
+  - ✅ Control de inventario automático
 
-## 🎯 Próximas Características
+- **Interfaz de Usuario**
+  - ✅ Diseño moderno y responsivo con Tailwind CSS
+  - ✅ Componentes reutilizables con shadcn/ui
+  - ✅ Navegación fluida con Next.js App Router
+  - ✅ Notificaciones toast para mejor UX
+  - ✅ Gestión de estado optimizada
+
+## ✨ Características Implementadas
 
 - **Autenticación y Usuarios** 🔒
-  - [ ] Registro de usuarios
-  - [ ] Inicio de sesión
-  - [ ] Roles (Admin/Cliente)
-  - [ ] Perfil de usuario personalizable
+  - ✅ Registro de usuarios
+  - ✅ Inicio de sesión
+  - ✅ Protección de rutas
+  - ✅ JWT para autenticación
 
 - **Carrito de Compras** 🛒
-  - [ ] Agregar productos al carrito
-  - [ ] Gestionar cantidades
-  - [ ] Persistencia del carrito
-  - [ ] Proceso de checkout
+  - ✅ Agregar productos al carrito
+  - ✅ Gestionar cantidades
+  - ✅ Persistencia del carrito
+  - ✅ Proceso de checkout
+  - ✅ Validación de stock
+
+- **Órdenes** 📦
+  - ✅ Crear órdenes desde el carrito
+  - ✅ Historial de órdenes
+  - ✅ Vista detallada de órdenes
+  - ✅ Estado de las órdenes
+
+## 🎯 Próximas Características
 
 - **Categorías y Filtros** 🏷️
   - [ ] Categorización de productos
@@ -39,10 +56,9 @@ Una aplicación web moderna de comercio electrónico construida con Next.js y Ne
 - **Características Adicionales** ⭐
   - [ ] Sistema de reseñas y calificaciones
   - [ ] Lista de deseos
-  - [ ] Historial de pedidos
   - [ ] Panel de administración avanzado
   - [ ] Notificaciones en tiempo real
-  - [ ] Gestión de inventario
+  - [ ] Roles de usuario (Admin/Cliente)
 
 ## 🛠️ Tecnologías
 
