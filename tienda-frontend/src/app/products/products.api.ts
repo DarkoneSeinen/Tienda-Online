@@ -1,16 +1,17 @@
+const API_BASE_URL = 'https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api';
+
 export async function getProducts() {
-  const data = await fetch('https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api/products');
+  const data = await fetch(`${API_BASE_URL}/products`);
   return await data.json();
 }
 
 export async function getProduct(id: string) {
-  const data = await fetch(`https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api/products/${id}`);
+  const data = await fetch(`${API_BASE_URL}/products/${id}`);
   return await data.json();
 }
 
 export async function createProduct(productData: any){
-
-    const res = await fetch('https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api/products', {
+    const res = await fetch(`${API_BASE_URL}/products`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -18,12 +19,12 @@ export async function createProduct(productData: any){
         },
         body: JSON.stringify(productData),
     })
-    const data= await res.json()
+    const data = await res.json()
     console.log(data)
 }
 
 export async function updateProduct(id: string, productData: any) {
-    const res = await fetch(`https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api/products/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/products/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -34,7 +35,7 @@ export async function updateProduct(id: string, productData: any) {
 }
 
 export async function deleteProduct(id: string) {
-    const res = await fetch(`https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api/products/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/products/${id}`, {
         method: "DELETE",
     });
     return await res.json();
