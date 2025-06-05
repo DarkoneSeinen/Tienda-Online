@@ -40,25 +40,6 @@ Una aplicación web moderna de comercio electrónico construida con Next.js y Ne
   - ✅ Vista detallada de órdenes
   - ✅ Estado de las órdenes
 
-## 🎯 Próximas Características
-
-- **Categorías y Filtros** 🏷️
-  - [ ] Categorización de productos
-  - [ ] Filtros avanzados
-  - [ ] Búsqueda inteligente
-  - [ ] Ordenamiento personalizado
-
-- **Proceso de Pago** 💳
-  - [ ] Integración con pasarela de pagos
-  - [ ] Múltiples métodos de pago
-  - [ ] Facturación automática
-
-- **Características Adicionales** ⭐
-  - [ ] Sistema de reseñas y calificaciones
-  - [ ] Lista de deseos
-  - [ ] Panel de administración avanzado
-  - [ ] Notificaciones en tiempo real
-  - [ ] Roles de usuario (Admin/Cliente)
 
 ## 🛠️ Tecnologías
 
