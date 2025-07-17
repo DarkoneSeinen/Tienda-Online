@@ -8,9 +8,11 @@ async function bootstrap() {
 
   // Configure CORS
   app.enableCors({
-    origin: 'https://ominous-succotash-pjr6v6w6q99vhrvwj-3000.app.github.dev',
+    origin: 'https://refactored-invention-969jwvvjx572p4jq-3000.app.github.dev', 
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: true,
+    // https://refactored-invention-969jwvvjx572p4jq-3000.app.github.dev
+    // https://ominous-succotash-pjr6v6w6q99vhrvwj-3000.app.github.dev
   });
 
   const config = new DocumentBuilder() // coumentacion de swagger

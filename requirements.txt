@@ -1,0 +1,12 @@
+--- BACKEND ---
+npm: npm install
+prisma: npm install prisma --save-dev 
+>>> crear esquema prisma: npx prisma migrate dev
+
+swaggerUI: npm install swagger-ui-express swagger-autogen
+nestjs: npm i -g @nestjs/cli
+
+-- FRONTEND ---
+npm: npm install
+>>> para usar chadcn en otro entorno: rm components.json luego 
+->schadcn: npx shadcn@latest init

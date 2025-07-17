@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { CartIcon } from './icons';
 import { getCart } from '@/app/cart/cart.api';
 
@@ -16,49 +16,46 @@ export function Navbar() {
   const [user, setUser] = useState<User | null>(null);
   const [cartItemsCount, setCartItemsCount] = useState(0);
   const router = useRouter();
+  const pathname = usePathname();
 
-  useEffect(() => {
-    const checkUser = async () => {
-      const userStr = localStorage.getItem('user');
-      if (userStr) {
-        setUser(JSON.parse(userStr));
-        try {
-          const cart = await getCart();
-          setCartItemsCount(cart.items.length);
-        } catch (error) {
-          console.error('Failed to load cart:', error);
-        }
-      } else {
-        setUser(null);
+  const updateUserAndCart = useCallback(async () => {
+    const token = localStorage.getItem('token');
+    const userStr = localStorage.getItem('user');
+
+    if (token && userStr) {
+      setUser(JSON.parse(userStr));
+      try {
+        const cart = await getCart();
+        setCartItemsCount(cart.items.length);
+      } catch (error) {
+        console.error('Failed to load cart:', error);
         setCartItemsCount(0);
       }
-    };
-
-    // Check initial state
-    checkUser();
-
-    // Listen for storage changes
-    window.addEventListener('storage', checkUser);
-    
-    // Custom events for auth and cart changes
-    window.addEventListener('authStateChange', checkUser);
-    window.addEventListener('cartUpdate', checkUser);
-
-    return () => {
-      window.removeEventListener('storage', checkUser);
-      window.removeEventListener('authStateChange', checkUser);
-      window.removeEventListener('cartUpdate', checkUser);
-    };
+    } else {
+      setUser(null);
+      setCartItemsCount(0);
+    }
   }, []);
 
+  useEffect(() => {
+    updateUserAndCart();
+    window.addEventListener('storage', updateUserAndCart);
+
+    return () => {
+      window.removeEventListener('storage', updateUserAndCart);
+    };
+  }, [updateUserAndCart]);
+
   const handleLogout = () => {
-    localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
     setUser(null);
+    setCartItemsCount(0);
     router.push('/auth/login');
   };
 
-  if (!user) {
+  // No mostrar la navbar en las páginas de autenticación
+  if (pathname === '/auth/login' || pathname === '/auth/register') {
     return null;
   }
 
@@ -70,7 +67,11 @@ export function Navbar() {
             <Link href="/" className="flex-shrink-0 flex items-center">
               <span className="text-xl font-bold">Tienda Online</span>
             </Link>
-          </div>              <div className="flex items-center space-x-4">
+          </div>
+          
+          <div className="flex items-center space-x-4">
+            {user ? (
+              <>
                 <span className="text-gray-700">Welcome, {user.name}</span>
                 <Link href="/cart" className="relative">
                   <Button variant="ghost" className="p-2">
@@ -85,7 +86,18 @@ export function Navbar() {
                 <Button variant="outline" onClick={handleLogout}>
                   Logout
                 </Button>
-              </div>
+              </>
+            ) : (
+              <>
+                <Link href="/auth/login">
+                  <Button variant="ghost">Login</Button>
+                </Link>
+                <Link href="/auth/register">
+                  <Button variant="default">Register</Button>
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </nav>

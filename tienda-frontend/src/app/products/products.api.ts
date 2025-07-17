@@ -1,4 +1,6 @@
-const API_BASE_URL = 'https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api';
+const API_BASE_URL = 'https://refactored-invention-969jwvvjx572p4jq-4000.app.github.dev/api';
+// ent2 :https://refactored-invention-969jwvvjx572p4jq-4000.app.github.dev/api
+// https://ominous-succotash-pjr6v6w6q99vhrvwj-4000.app.github.dev/api
 
 export async function getProducts() {
   const data = await fetch(`${API_BASE_URL}/products`);
