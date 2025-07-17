@@ -1,6 +1,6 @@
 import { getAuthToken } from '../auth/auth.utils';
 
-const API_URL = 'https://refactored-invention-969jwvvjx572p4jq-4000.app.github.dev/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 interface CartItem {
   id: number;
